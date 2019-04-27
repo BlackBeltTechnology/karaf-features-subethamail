@@ -5,7 +5,7 @@
     <parent>
         <groupId>hu.blackbelt.karaf.features</groupId>
         <artifactId>subethamail</artifactId>
-        <version>3.1.7_1-SNAPSHOT</version>
+        <version>3.1.7_1</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>subethamail-features</artifactId>
