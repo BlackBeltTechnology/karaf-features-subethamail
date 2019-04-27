@@ -1,0 +1,11 @@
+# Karaf feature SubEthaMail
+
+Externsion to karaf which adds SubEthaMail bundles to karaf features.
+
+To install some features required. Please add the folloeing repository to your distribution: 
+
+- mvn:hu.blackbelt.karaf.features/javax/1.0.1/xml/features (Github: https://github.com/BlackBeltTechnology/karaf-features-javax)
+
+## Features:
+
+- subethamail 3.1.7
