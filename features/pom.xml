@@ -64,7 +64,7 @@
                                 <descriptor>mvn:org.apache.karaf.features/framework/${karaf-version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/standard/${karaf-version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf-version}/xml/features</descriptor>
-                                <descriptor>mvn:hu.blackbelt.karaf.features/javax-features/${javax-karaf-feature-version}/xml/features</descriptor>
+                                <descriptor>mvn:hu.blackbelt.karaf.features/javax-features/${javax-karaf-features-version}/xml/features</descriptor>
                                 <descriptor>file:${project.build.directory}/feature/feature.xml</descriptor>
                             </descriptors>
                             <distribution>org.apache.karaf.features:framework</distribution>
@@ -97,7 +97,7 @@
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
-            <version>${javax-karaf-feature-version}</version>
+            <version>${javax-karaf-features-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
