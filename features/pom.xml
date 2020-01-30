@@ -5,7 +5,7 @@
     <parent>
         <groupId>hu.blackbelt.karaf.features</groupId>
         <artifactId>subethamail</artifactId>
-        <version>3.1.7_1</version>
+        <version>1.0.0</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>subethamail-features</artifactId>
@@ -64,7 +64,6 @@
                                 <descriptor>mvn:org.apache.karaf.features/framework/${karaf-version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/standard/${karaf-version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf-version}/xml/features</descriptor>
-                                <descriptor>mvn:hu.blackbelt.karaf.features/javax-features/${javax-karaf-feature-version}/xml/features</descriptor>
                                 <descriptor>file:${project.build.directory}/feature/feature.xml</descriptor>
                             </descriptors>
                             <distribution>org.apache.karaf.features:framework</distribution>
@@ -90,14 +89,6 @@
             <type>kar</type>
             <scope>runtime</scope>
             <version>${karaf-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.blackbelt.karaf.features</groupId>
-            <artifactId>javax-features</artifactId>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-            <version>${javax-karaf-feature-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
