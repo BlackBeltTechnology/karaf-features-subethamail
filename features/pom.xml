@@ -5,12 +5,16 @@
     <parent>
         <groupId>hu.blackbelt.karaf.features</groupId>
         <artifactId>subethamail</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>subethamail-features</artifactId>
     <packaging>feature</packaging>
     <name>Subethamail karaf features</name>
+
+    <properties>
+        <sign.skip>true</sign.skip>
+    </properties>
 
     <build>
         <resources>
@@ -45,67 +49,103 @@
             </plugin>
 
             <plugin>
-                <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <enableGeneration>true</enableGeneration>
-                    <aggregateFeatures>true</aggregateFeatures>
-                </configuration>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>feature-verify</id>
-                        <phase>process-resources</phase>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>verify</goal>
+                            <goal>attach-artifact</goal>
                         </goals>
                         <configuration>
-                            <descriptors>
-                                <descriptor>mvn:org.apache.karaf.features/framework/${karaf-version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.karaf.features/standard/${karaf-version}/xml/features</descriptor>
-                                <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf-version}/xml/features</descriptor>
-                                <descriptor>file:${project.build.directory}/feature/feature.xml</descriptor>
-                            </descriptors>
-                            <distribution>org.apache.karaf.features:framework</distribution>
-                            <javase>1.8</javase>
-                            <framework>
-                                <feature>framework</feature>
-                                <feature>shell-compat</feature>
-                            </framework>
-                            <features>
-                                <feature>subethamail</feature>
-                            </features>
+                            <artifacts>
+                                <artifact>
+                                    <file>target/feature/feature.xml</file>
+                                    <type>xml</type>
+                                    <classifier>feature</classifier>
+                                </artifact>
+                            </artifacts>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>framework</artifactId>
-            <type>kar</type>
-            <scope>runtime</scope>
-            <version>${karaf-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>standard</artifactId>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-            <version>${karaf-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>enterprise</artifactId>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-            <version>${karaf-version}</version>
-        </dependency>
 
-    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>verify-feature</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.karaf.tooling</groupId>
+                        <artifactId>karaf-maven-plugin</artifactId>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <enableGeneration>true</enableGeneration>
+                            <aggregateFeatures>true</aggregateFeatures>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>feature-verify</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <descriptors>
+                                        <descriptor>mvn:org.apache.karaf.features/framework/${karaf-version}/xml/features</descriptor>
+                                        <descriptor>mvn:org.apache.karaf.features/standard/${karaf-version}/xml/features</descriptor>
+                                        <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf-version}/xml/features</descriptor>
+                                        <descriptor>file:${project.build.directory}/feature/feature.xml</descriptor>
+                                    </descriptors>
+                                    <distribution>org.apache.karaf.features:framework</distribution>
+                                    <javase>11</javase>
+                                    <framework>
+                                        <feature>framework</feature>
+                                        <feature>shell-compat</feature>
+                                    </framework>
+                                    <features>
+                                        <feature>subethamail</feature>
+                                    </features>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.karaf.features</groupId>
+                    <artifactId>framework</artifactId>
+                    <type>kar</type>
+                    <scope>runtime</scope>
+                    <version>${karaf-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.karaf.features</groupId>
+                    <artifactId>standard</artifactId>
+                    <classifier>features</classifier>
+                    <type>xml</type>
+                    <scope>runtime</scope>
+                    <version>${karaf-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.karaf.features</groupId>
+                    <artifactId>enterprise</artifactId>
+                    <classifier>features</classifier>
+                    <type>xml</type>
+                    <scope>runtime</scope>
+                    <version>${karaf-version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
