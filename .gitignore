@@ -55,4 +55,6 @@ local.properties
 wercker.env
 /**/.wercker
 **/GSModel.log*
+**/.flattened-pom.xml
+
 
