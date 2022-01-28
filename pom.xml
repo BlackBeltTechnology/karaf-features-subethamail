@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>hu.blackbelt.karaf.features</groupId>
     <version>${revision}</version>
@@ -14,19 +15,21 @@
         <maven>3.8.3</maven>
     </properties>
 
-    <description>Karaf Apache Commons  features</description>
+    <description>Karaf Apache Commons features</description>
     <url>https://github.com/BlackBeltTechnology/karaf-features-${project.artifactId}</url>
     <issueManagement>
         <url>https://github.com/BlackBeltTechnology/karaf-features-${project.artifactId}/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
-    
+
     <scm>
         <connection>scm:git:git://github.com/BlackBeltTechnology/karaf-features-${project.artifactId}.git</connection>
-        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/karaf-features-${project.artifactId}.git</developerConnection>
+        <developerConnection>
+            scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/karaf-features-${project.artifactId}.git
+        </developerConnection>
         <url>https://github.com/BlackBeltTechnology/karaf-features-${project.artifactId}</url>
     </scm>
-    
+
     <developers>
         <developer>
             <id>robson</id>
@@ -37,7 +40,7 @@
             <organizationUrl>http://www.blackbelt.hu</organizationUrl>
         </developer>
     </developers>
-    
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -45,7 +48,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
 
     <build>
         <pluginManagement>
@@ -75,7 +77,7 @@
                         </execution>
                     </executions>
                 </plugin>
-                
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
